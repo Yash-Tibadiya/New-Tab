@@ -112,6 +112,50 @@ const CryptoTracker = () => {
     }
   }, [showCustomCurrencyInput]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showCustomCoinInput &&
+        customCoinInputRef.current &&
+        !customCoinInputRef.current.contains(event.target as Node)
+      ) {
+        if (customCoinInputValue.trim()) {
+          setSelectedCoin(customCoinInputValue.trim());
+        } else {
+          setSelectedCoin(coinOptions[0].id);
+        }
+        setShowCustomCoinInput(false);
+        setCoinData(null);
+        setError("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showCustomCoinInput, customCoinInputValue]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showCustomCurrencyInput &&
+        customCurrencyInputRef.current &&
+        !customCurrencyInputRef.current.contains(event.target as Node)
+      ) {
+        if (customCurrencyInputValue.trim()) {
+          setSelectedCurrency(customCurrencyInputValue.trim().toUpperCase());
+        } else {
+          setSelectedCurrency("");
+        }
+        setShowCustomCurrencyInput(false);
+        setCoinData(null);
+        setError("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showCustomCurrencyInput, customCurrencyInputValue]);
+
   const fetchCoinData = async () => {
     if (!selectedCurrency || selectedCurrency === "custom_currency") {
       setError("Please select or enter a valid currency");
