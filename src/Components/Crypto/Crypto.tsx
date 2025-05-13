@@ -506,13 +506,7 @@ const CryptoTracker = () => {
           {/* Fetch Button */}
           <button
             onClick={fetchCoinData}
-            disabled={
-              loading ||
-              !selectedCurrency ||
-              selectedCurrency === "custom_currency" ||
-              !selectedCoin ||
-              selectedCoin === "custom_coin"
-            }
+            disabled={loading}
             className={`
               w-full px-6 py-4 rounded-xl font-bold text-lg
               transition-all duration-300 transform cursor-pointer
