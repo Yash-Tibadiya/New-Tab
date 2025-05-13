@@ -1,0 +1,378 @@
+/* eslint-disable prefer-const */
+// import { useState } from "react";
+// import { Loader2, TrendingUp, AlertCircle, X } from "lucide-react";
+
+// const baseUrl = "https://openapiv1.coinstats.app/coins";
+
+// interface Coin {
+//   id: string;
+//   name: string;
+//   symbol: string;
+//   color: string;
+//   gradient: string;
+// }
+
+// interface Currency {
+//   code: string;
+//   symbol: string;
+// }
+
+// interface CoinData {
+//   id: string;
+//   name: string;
+//   symbol: string;
+//   price: number;
+//   marketCap: number;
+//   priceChange1d: number;
+//   priceChange1h: number;
+//   priceChange1w: number;
+//   volume: number;
+//   icon: string;
+// }
+
+// interface ApiResponse {
+//   result: CoinData[];
+//   meta: {
+//     page: number;
+//     limit: number;
+//     itemCount: number;
+//     pageCount: number;
+//     hasPreviousPage: boolean;
+//     hasNextPage: boolean;
+//   };
+// }
+
+// const coins: Coin[] = [
+//   {
+//     id: "bitcoin",
+//     name: "bitcoin",
+//     symbol: "BTC",
+//     color: "from-orange-400 to-orange-600",
+//     gradient: "hover:from-orange-500 hover:to-orange-700",
+//   },
+//   {
+//     id: "ethereum",
+//     name: "ethereum",
+//     symbol: "ETH",
+//     color: "from-purple-400 to-purple-600",
+//     gradient: "hover:from-purple-500 hover:to-purple-700",
+//   },
+//   {
+//     id: "solana",
+//     name: "solana",
+//     symbol: "SOL",
+//     color: "from-blue-400 to-blue-600",
+//     gradient: "hover:from-blue-500 hover:to-blue-700",
+//   },
+// ];
+
+// const currencies: Currency[] = [
+//   { code: "USD", symbol: "$" },
+//   { code: "INR", symbol: "₹" },
+//   { code: "EUR", symbol: "€" },
+// ];
+
+// export default function CryptoTracker() {
+//   const [selectedCoin, setSelectedCoin] = useState<string>("bitcoin");
+//   const [selectedCurrency, setSelectedCurrency] = useState<string>("");
+//   const [coinData, setCoinData] = useState<CoinData | null>(null);
+//   const [loading, setLoading] = useState<boolean>(false);
+//   const [error, setError] = useState<string>("");
+//   const [showDrawer, setShowDrawer] = useState<boolean>(false);
+
+//   const fetchCoinData = async () => {
+//     if (!selectedCurrency) {
+//       setError("Please select a currency");
+//       return;
+//     }
+
+//     setLoading(true);
+//     setError("");
+
+//     try {
+//       const selectedCoinData = coins.find((coin) => coin.id === selectedCoin);
+//       if (!selectedCoinData) throw new Error("Coin not found");
+
+//       const apiKey = "UX3ivdec0icxMIqnzMmNqc7gOje7szOdHGmToW49PIc=";
+
+//       const response = await fetch(
+//         `${baseUrl}?currency=${selectedCurrency}&name=${selectedCoinData.name}`,
+//         {
+//           method: "GET",
+//           headers: {
+//             accept: "application/json",
+//             "X-API-KEY": apiKey,
+//           },
+//         }
+//       );
+
+//       if (!response.ok) {
+//         throw new Error("Failed to fetch data");
+//       }
+
+//       const data: ApiResponse = await response.json();
+
+//       if (data.result && data.result.length > 0) {
+//         const coin = data.result.find(
+//           (c: CoinData) =>
+//             c.id === selectedCoinData.id ||
+//             c.name.toLowerCase() === selectedCoinData.name.toLowerCase()
+//         );
+
+//         if (coin) {
+//           setCoinData(coin);
+//           setShowDrawer(true);
+//         } else {
+//           setCoinData(data.result[0]);
+//           setShowDrawer(true);
+//         }
+//       } else {
+//         throw new Error("Coin data not found");
+//       }
+//     } catch (err) {
+//       console.error(err);
+//       setError(err instanceof Error ? err.message : "Failed to fetch data");
+//       setCoinData(null);
+//       setShowDrawer(false);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const closeDrawer = () => {
+//     setShowDrawer(false);
+//   };
+
+//   const currentCoin = coins.find((coin) => coin.id === selectedCoin);
+//   const currentCurrency = currencies.find(
+//     (curr) => curr.code === selectedCurrency
+//   );
+
+//   return (
+//     <div className="bg-gray-900 rounded-3xl w-[350px] h-full max-w-md overflow-hidden relative">
+//       {/* Main Content */}
+//       <div className="p-8">
+//         <div className="flex items-center justify-center mb-8">
+//           <TrendingUp className="w-8 h-8 text-emerald-400 mr-3" />
+//           <h2 className="text-3xl font-bold text-white">Crypto Tracker</h2>
+//         </div>
+
+//         <div className="space-y-6">
+//           {/* Coin Selection */}
+//           <div>
+//             <p className="text-gray-400 text-sm mb-3">Select Cryptocurrency</p>
+//             <div className="grid grid-cols-3 gap-3">
+//               {coins.map((coin) => (
+//                 <button
+//                   key={coin.id}
+//                   onClick={() => {
+//                     setSelectedCoin(coin.id);
+//                     setCoinData(null);
+//                     setError("");
+//                   }}
+//                   className={`
+//                     relative px-4 py-3 rounded-xl font-bold text-white
+//                     bg-gradient-to-br ${coin.color} ${coin.gradient}
+//                     transition-all duration-300 transform hover:scale-105 cursor-pointer
+//                     ${
+//                       selectedCoin === coin.id
+//                         ? "ring-4 ring-white/30 scale-105"
+//                         : ""
+//                     }
+//                   `}
+//                 >
+//                   <span className="relative z-10">{coin.symbol}</span>
+//                   {selectedCoin === coin.id && (
+//                     <div className="absolute inset-0 rounded-xl bg-white/20 animate-pulse" />
+//                   )}
+//                 </button>
+//               ))}
+//             </div>
+//           </div>
+
+//           {/* Currency Selection */}
+//           <div>
+//             <p className="text-gray-400 text-sm mb-3">Select Currency</p>
+//             <div className="grid grid-cols-3 gap-3">
+//               {currencies.map((currency) => (
+//                 <button
+//                   key={currency.code}
+//                   onClick={() => {
+//                     setSelectedCurrency(currency.code);
+//                     setCoinData(null);
+//                     setError("");
+//                   }}
+//                   className={`
+//                     px-4 py-3 rounded-xl font-bold
+//                     transition-all duration-300 transform hover:scale-105 cursor-pointer
+//                     ${
+//                       selectedCurrency === currency.code
+//                         ? "bg-emerald-500 text-white ring-4 ring-emerald-500/30"
+//                         : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+//                     }
+//                   `}
+//                 >
+//                   {currency.code}
+//                 </button>
+//               ))}
+//             </div>
+//           </div>
+
+//           {/* Fetch Button */}
+//           <button
+//             onClick={fetchCoinData}
+//             disabled={loading || !selectedCurrency}
+//             className={`
+//               w-full px-6 py-4 rounded-xl font-bold text-lg
+//               transition-all duration-300 transform cursor-pointer
+//               ${
+//                 !selectedCurrency
+//                   ? "bg-gray-700 text-gray-400 cursor-not-allowed"
+//                   : loading
+//                   ? "bg-gray-700 text-gray-300"
+//                   : "bg-gradient-to-r from-emerald-400 to-teal-500 text-white hover:from-emerald-500 hover:to-teal-600 hover:scale-105 active:scale-95"
+//               }
+//             `}
+//           >
+//             {loading ? (
+//               <span className="flex items-center justify-center">
+//                 <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+//                 Fetching...
+//               </span>
+//             ) : (
+//               "Get Price"
+//             )}
+//           </button>
+
+//           {/* Error Message */}
+//           {error && (
+//             <div className="flex items-center justify-center text-red-400 animate-shake">
+//               <AlertCircle className="w-5 h-5 mr-2" />
+//               <span>{error}</span>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+
+//       {/* Internal Bottom Drawer */}
+//       <div
+//         className={`absolute inset-x-0 bottom-0 transform transition-transform duration-300 ease-out z-10 ${
+//           showDrawer ? "translate-y-0" : "translate-y-full"
+//         }`}
+//       >
+//         {coinData && (
+//           <div className="bg-gradient-to-t from-gray-800 to-gray-700 rounded-t-2xl p-6">
+//             {/* Close Button */}
+//             <button
+//               onClick={closeDrawer}
+//               className="absolute top-3 right-3 p-1.5 bg-gray-600 hover:bg-gray-500 rounded-full transition-colors"
+//             >
+//               <X className="w-4 h-4 text-white" />
+//             </button>
+
+//             <div className="space-y-4">
+//               {/* Drag Indicator */}
+//               <div className="w-10 h-1 bg-gray-500 rounded-full mx-auto mb-4" />
+
+//               {/* Main Price Display */}
+//               <div className="flex items-center justify-center space-x-3">
+//                 <div className="relative">
+//                   <img
+//                     src={coinData.icon}
+//                     alt={coinData.name}
+//                     className="w-12 h-12 rounded-full"
+//                     onError={(e) => {
+//                       e.currentTarget.style.display = "none";
+//                       e.currentTarget.nextElementSibling?.classList.remove(
+//                         "hidden"
+//                       );
+//                     }}
+//                   />
+//                   <div
+//                     className={`hidden w-12 h-12 rounded-full bg-gradient-to-br ${
+//                       currentCoin?.color || ""
+//                     } flex items-center justify-center`}
+//                   >
+//                     <span className="text-white font-bold text-lg">
+//                       {coinData.symbol}
+//                     </span>
+//                   </div>
+//                 </div>
+//                 <div className="text-white">
+//                   <p className="text-sm text-gray-400">{coinData.name}</p>
+//                   <p className="text-3xl font-bold">
+//                     {currentCurrency?.symbol}
+//                     {coinData.price.toLocaleString(undefined, {
+//                       minimumFractionDigits: 2,
+//                       maximumFractionDigits: 2,
+//                     })}
+//                   </p>
+//                 </div>
+//               </div>
+
+//               {/* Additional Stats */}
+//               <div className="border-t border-gray-600 pt-4 grid grid-cols-3 gap-3">
+//                 <div className="text-center">
+//                   <p className="text-xs text-gray-400">1h Change</p>
+//                   <p
+//                     className={`text-sm font-semibold ${
+//                       coinData.priceChange1h >= 0
+//                         ? "text-green-400"
+//                         : "text-red-400"
+//                     }`}
+//                   >
+//                     {coinData.priceChange1h >= 0 ? "+" : ""}
+//                     {coinData.priceChange1h.toFixed(2)}%
+//                   </p>
+//                 </div>
+//                 <div className="text-center">
+//                   <p className="text-xs text-gray-400">24h Change</p>
+//                   <p
+//                     className={`text-sm font-semibold ${
+//                       coinData.priceChange1d >= 0
+//                         ? "text-green-400"
+//                         : "text-red-400"
+//                     }`}
+//                   >
+//                     {coinData.priceChange1d >= 0 ? "+" : ""}
+//                     {coinData.priceChange1d.toFixed(2)}%
+//                   </p>
+//                 </div>
+//                 <div className="text-center">
+//                   <p className="text-xs text-gray-400">7d Change</p>
+//                   <p
+//                     className={`text-sm font-semibold ${
+//                       coinData.priceChange1w >= 0
+//                         ? "text-green-400"
+//                         : "text-red-400"
+//                     }`}
+//                   >
+//                     {coinData.priceChange1w >= 0 ? "+" : ""}
+//                     {coinData.priceChange1w.toFixed(2)}%
+//                   </p>
+//                 </div>
+//               </div>
+
+//               <div className="border-t border-gray-600 pt-4 grid grid-cols-2 gap-4">
+//                 <div className="text-center">
+//                   <p className="text-xs text-gray-400">Market Cap</p>
+//                   <p className="text-sm font-semibold text-white">
+//                     {currentCurrency?.symbol}
+//                     {(coinData.marketCap / 1000000000).toFixed(2)}B
+//                   </p>
+//                 </div>
+//                 <div className="text-center">
+//                   <p className="text-xs text-gray-400">24h Volume</p>
+//                   <p className="text-sm font-semibold text-white">
+//                     {currentCurrency?.symbol}
+//                     {(coinData.volume / 1000000).toFixed(2)}M
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
