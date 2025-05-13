@@ -533,7 +533,7 @@ const CryptoTracker = () => {
           </button>
 
           {/* Error Message */}
-          {error && (
+          {error && window.innerHeight >= 900 && (
             <div className="flex items-center justify-center text-red-400 animate-shake p-2 bg-red-900/30 rounded-lg">
               <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0" />
               <span className="text-sm">{error}</span>
