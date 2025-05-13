@@ -5,7 +5,7 @@ import { Loader2, TrendingUp, X, Edit3 } from "lucide-react"; // Added Edit3 for
 import { AlertCircle } from "lucide-react";
 
 const coinstatsApiKey = import.meta.env.VITE_COINSTATS_API_KEY;
-const baseUrl = import.meta.env.VITE_BASE_URL;
+const baseUrl = import.meta.env.VITE_COINSTATS_BASE_URL;
 
 // Renamed Coin to CoinOption and Currency to CurrencyOption to avoid confusion with CoinData
 interface CoinOption {

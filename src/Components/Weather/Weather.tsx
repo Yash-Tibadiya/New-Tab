@@ -15,8 +15,8 @@ interface WeatherData {
   };
 }
 
-const apiKey = "32b40b115c47d06fec6b9dc66735a47c";
-const apiUrl = "https://api.openweathermap.org/data/2.5/";
+const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+const apiUrl = import.meta.env.VITE_WEATHER_BASE_URL;
 
 const Weather: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -106,7 +106,7 @@ const Weather: React.FC = () => {
 
       <button
         style={{ opacity: showBar ? "0" : "1" }}
-        className="bg-white/40 border-none font-bold text-gray-900 px-3 py-1 rounded mt-[-1rem] transition-all duration-200 ease-in-out hover:bg-white/80 cursor-pointer"
+        className="bg-white/40 border-none font-bold text-gray-900 px-3 py-1 rounded mt-[-3rem] mb-5 transition-all duration-200 ease-in-out hover:bg-white/80 cursor-pointer"
         onClick={openSearchBox}
         type="button"
       >
@@ -130,7 +130,7 @@ const Weather: React.FC = () => {
               />
             </div>
           </div>
-          <div className="text-3xl px-1 py-3">
+          <div className="text-3xl px-1 pb-3">
             {weather.name}, {weather.sys.country}
           </div>
         </div>
