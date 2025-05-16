@@ -1,16 +1,19 @@
 import "./App.css";
-import CryptoTracker from "./Components/Crypto/Crypto";
-import Greeting from "./Components/Greeting/Greeting";
 import Time from "./Components/Time/Time";
 import Todo from "./Components/Todo/Todo";
 import Weather from "./Components/Weather/Weather";
+import Greeting from "./Components/Greeting/Greeting";
+import CryptoTracker from "./Components/Crypto/Crypto";
+import Bookmarks from "./Components/Bookmarks/Bookmarks";
 
 function App() {
   return (
     <>
       <div className="app-wrapper">
         <div className="App">
-          <div className="item1">{/* <Bookmarks /> */}</div>
+          <div className="item1">
+            <Bookmarks />
+          </div>
           <div className="item2">
             <Time />
           </div>
