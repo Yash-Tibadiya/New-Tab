@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "name": "Home Tab",
   "icons": {
-    "128": "icon.png"
+    "128": "flame.png"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
