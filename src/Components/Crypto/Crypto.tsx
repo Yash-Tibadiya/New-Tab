@@ -365,7 +365,7 @@ const CryptoTracker = () => {
                         }
                       `}
                     >
-                      <span className="relative z-10 flex items-center justify-center h-full">
+                      <span className="relative z-10 flex items-center justify-center h-full cursor-pointer">
                         {isCustomCoinSetAndSelected
                           ? selectedCoin.toUpperCase()
                           : coinOpt.symbol}
@@ -391,7 +391,7 @@ const CryptoTracker = () => {
                     className={`
                       relative px-4 py-3 rounded-xl font-bold text-white
                       bg-gradient-to-br ${coinOpt.color} ${coinOpt.gradient}
-                      transition-all duration-300 transform hover:scale-105
+                      transition-all duration-300 transform hover:scale-105 cursor-pointer
                       ${
                         selectedCoin === coinOpt.id && !showCustomCoinInput
                           ? "ring-4 ring-white/30 scale-105"
@@ -467,7 +467,7 @@ const CryptoTracker = () => {
                         }
                       `}
                     >
-                      <span className="relative z-10 flex items-center justify-center h-full">
+                      <span className="relative z-10 flex items-center justify-center h-full cursor-pointer">
                         {isCustomCurrencySetAndSelected
                           ? selectedCurrency.toUpperCase()
                           : currencyOpt.symbol}

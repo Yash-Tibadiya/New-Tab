@@ -86,9 +86,9 @@ const Todo = () => {
   }, [todos]);
 
   return (
-    <div className="w-[350px] h-[400px] max-w-md bg-gradient-to-br from-violet-600 to-indigo-800 rounded-xl overflow-hidden">
+    <div className="w-[350px] h-[400px] max-w-md bg-gradient-to-br from-violet-800 to-indigo-950 rounded-xl overflow-hidden">
       <div className="p-6 space-y-4">
-        <h3 className="text-2xl font-bold text-white text-center">My Tasks</h3>
+        <h3 className="text-2xl font-bold text-white text-center select-none">My Tasks</h3>
 
         {/* Todo input form */}
         <form
@@ -105,7 +105,7 @@ const Todo = () => {
           />
           <button
             type="submit"
-            className="bg-white text-indigo-800 px-4 py-2 rounded-lg font-medium transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
+            className="bg-white font-bold text-indigo-800 cursor-pointer px-4 py-2 rounded-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
             disabled={todo.trim() === ""}
           >
             Add
@@ -183,7 +183,7 @@ const Todo = () => {
           ))}
 
           {todos.length === 0 && (
-            <div className="text-center text-white/50 py-6">
+            <div className="text-center text-white/50 py-6 select-none">
               No tasks yet. Add one above!
             </div>
           )}

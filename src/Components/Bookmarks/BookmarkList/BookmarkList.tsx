@@ -10,10 +10,12 @@ const BookmarkList = ({
   return (
     <section className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-700/30 backdrop-blur-sm">
       <header className="flex items-center justify-between p-6 border-b border-slate-700/50 bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm">
-        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">Bookmarks</h2>
+        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500 select-none">
+          Bookmarks
+        </h2>
         <button
           onClick={openForm}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium transition-all duration-300 shadow-md hover:shadow-blue-500/20 hover:shadow-lg transform hover:-translate-y-0.5"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium transition-all duration-300 shadow-md hover:shadow-blue-500/20 hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
         >
           <PlusCircle size={18} className="animate-pulse" />
           <span>Add New</span>
@@ -47,7 +49,7 @@ const BookmarkList = ({
             </p>
             <button
               onClick={openForm}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-0.5 cursor-pointer"
             >
               <PlusCircle size={18} />
               <span>Add Bookmark</span>

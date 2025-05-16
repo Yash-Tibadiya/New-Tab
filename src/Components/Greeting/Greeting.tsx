@@ -54,7 +54,9 @@ const Greeting = () => {
   return (
     <div className="flex justify-center flex-row items-center gap-24 w-[350px] h-[130px] bg-gradient-to-br from-gray-800 to-gray-900 text-white p-6 shadow-lg text-center rounded-xl">
       <div className="flex flex-col items-center justify-center">
-        <span className="mb-2 text-4xl tracking-wider">{greetingMessage}</span>
+        <span className="mb-2 text-4xl tracking-wider select-none">
+          {greetingMessage}
+        </span>
         {!isMade ? (
           <form
             onSubmit={submitUserName}

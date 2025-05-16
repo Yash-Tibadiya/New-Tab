@@ -74,7 +74,9 @@ const BookmarkForm = ({ addBookmark, closeForm }: BookmarkFormProps) => {
       className="w-full max-w-md p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-2xl border border-slate-700/30 backdrop-blur-sm animate-fadeIn"
     >
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">Add Bookmark</h2>
+        <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">
+          Add Bookmark
+        </h2>
         <button
           onClick={closeForm}
           className="text-slate-400 hover:text-red-400 transition-all duration-300 transform hover:rotate-90 p-1 rounded-full hover:bg-slate-700/50"
@@ -136,14 +138,14 @@ const BookmarkForm = ({ addBookmark, closeForm }: BookmarkFormProps) => {
           <button
             type="button"
             onClick={closeForm}
-            className="px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 hover:bg-slate-700/50 rounded-lg"
+            className="px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 hover:bg-slate-700/50 rounded-lg cursor-pointer"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={!bmTitle.trim() || !bmLink.trim() || !isUrlValid}
-            className="px-5 py-2.5 text-sm font-medium bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg shadow-md hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+            className="px-5 py-2.5 text-sm font-medium bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg shadow-md hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none cursor-pointer"
           >
             Add Bookmark
           </button>

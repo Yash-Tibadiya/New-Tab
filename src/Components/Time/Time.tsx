@@ -21,7 +21,7 @@ const Time: React.FC = () => {
   return (
     <>
       <div className="flex justify-center flex-row items-center gap-24 w-[350px] h-[130px] bg-gradient-to-br from-gray-800 to-gray-900 text-white p-6 shadow-lg text-center rounded-xl">
-        <div className="flex flex-col">
+        <div className="flex flex-col select-none">
           <span className="text-4xl font-bold tracking-wider mb-1">
             {currentTime}
           </span>
