@@ -45,7 +45,7 @@ const Bookmarks = () => {
   }, [bookmarks]);
 
   return (
-    <div className="w-[450px] h-[683px]">
+    <div className="w-[450px] h-[683px] select-none">
       {showForm && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center">
           <BookmarkForm addBookmark={addBookmark} closeForm={closeForm} />

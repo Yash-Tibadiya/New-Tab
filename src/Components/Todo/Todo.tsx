@@ -86,7 +86,7 @@ const Todo = () => {
   }, [todos]);
 
   return (
-    <div className="w-[350px] h-[400px] max-w-md bg-gradient-to-br from-violet-800/70 to-indigo-950/80 rounded-xl overflow-hidden">
+    <div className="w-[350px] h-[400px] max-w-md bg-gradient-to-br from-violet-800/70 to-indigo-950/80 rounded-xl overflow-hidden select-none">
       <div className="p-6 space-y-4">
         <h3 className="text-2xl font-bold text-white text-center select-none">My Tasks</h3>
 

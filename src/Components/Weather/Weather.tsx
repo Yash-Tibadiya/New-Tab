@@ -71,7 +71,7 @@ const Weather: React.FC = () => {
 
   return (
     <div
-      className={`flex flex-col items-center rounded-2xl w-[350px] h-[271px] p-4 transition-all duration-[400ms] ease-out
+      className={`flex flex-col items-center rounded-2xl w-[350px] h-[271px] p-4 transition-all duration-[400ms] ease-out select-none
         ${
           isWarmWeather
             ? "bg-gradient-to-br from-gray-900/60 to-orange-500"

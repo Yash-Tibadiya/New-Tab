@@ -293,7 +293,7 @@ const CryptoTracker = () => {
       : { code: "", symbol: "" });
 
   return (
-    <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-3xl w-[350px] h-full max-w-md overflow-hidden relative">
+    <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-3xl w-[350px] h-full max-w-md overflow-hidden relative select-none">
       {/* Main Content */}
       <div className="p-8">
         <div className="flex items-center justify-center mb-8">
