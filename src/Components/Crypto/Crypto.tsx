@@ -293,11 +293,11 @@ const CryptoTracker = () => {
       : { code: "", symbol: "" });
 
   return (
-    <div className="bg-gray-900 rounded-3xl w-[350px] h-full max-w-md overflow-hidden relative">
+    <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-3xl w-[350px] h-full max-w-md overflow-hidden relative">
       {/* Main Content */}
       <div className="p-8">
         <div className="flex items-center justify-center mb-8">
-          <TrendingUp className="w-8 h-8 text-emerald-400 mr-3" />
+          <TrendingUp className="w-8 h-8 text-emerald-500 mr-3" />
           <h2 className="text-3xl font-bold text-white">Crypto Tracker</h2>
         </div>
 
@@ -518,7 +518,7 @@ const CryptoTracker = () => {
                   ? "bg-gray-700 text-gray-400 cursor-not-allowed"
                   : loading
                   ? "bg-gray-700 text-gray-300"
-                  : "bg-gradient-to-r from-emerald-400 to-teal-500 text-white hover:from-emerald-500 hover:to-teal-600 hover:scale-105 active:scale-95"
+                  : "bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:from-emerald-600 hover:to-teal-700 hover:scale-105 active:scale-95"
               }
             `}
           >

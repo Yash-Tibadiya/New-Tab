@@ -74,8 +74,8 @@ const Weather: React.FC = () => {
       className={`flex flex-col items-center rounded-2xl w-[350px] h-[271px] p-4 transition-all duration-[400ms] ease-out
         ${
           isWarmWeather
-            ? "bg-gradient-to-br from-gray-900 to-orange-500"
-            : "bg-gradient-to-br from-gray-900 to-blue-500"
+            ? "bg-gradient-to-br from-gray-900/60 to-orange-500"
+            : "bg-gradient-to-br from-gray-900/60 to-blue-500"
         }
       `}
     >
@@ -106,7 +106,7 @@ const Weather: React.FC = () => {
 
       <button
         style={{ opacity: showBar ? "0" : "1" }}
-        className="bg-white/40 border-none font-bold text-gray-900 px-3 py-1 rounded mt-[-3rem] mb-5 transition-all duration-200 ease-in-out hover:bg-white/80 cursor-pointer"
+        className="bg-white/30 border-none font-bold text-gray-800 px-3 py-1 rounded mt-[-3rem] mb-5 transition-all duration-200 ease-in-out hover:bg-white/80 cursor-pointer"
         onClick={openSearchBox}
         type="button"
       >
