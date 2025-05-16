@@ -8,7 +8,7 @@ const BookmarkList = ({
   openForm,
 }: BookmarkListProps) => {
   return (
-    <section className="bg-slate-900 rounded-2xl shadow-xl overflow-hidden">
+    <section className="bg-slate-900 rounded-2xl overflow-hidden">
       <header className="flex items-center justify-between p-6 border-b border-slate-700">
         <h2 className="text-2xl font-bold text-white">Bookmarks</h2>
         <button
@@ -19,7 +19,7 @@ const BookmarkList = ({
           <span>Add New</span>
         </button>
       </header>
-      <div className="p-6 h-[550px] overflow-auto bg-slate-900 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-800">
+      <div className="p-6 h-[594px] overflow-auto bg-slate-900 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-800">
         {bookmarks.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center p-6">
             <div className="bg-slate-800 p-6 rounded-full mb-4">
