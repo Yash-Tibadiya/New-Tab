@@ -8,8 +8,8 @@ const BookmarkList = ({
   openForm,
 }: BookmarkListProps) => {
   return (
-    <section className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-700/30 backdrop-blur-sm">
-      <header className="flex items-center justify-between p-6 border-b border-slate-700/50 bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm">
+    <section className="rounded-2xl overflow-hidden shadow-xl border border-slate-700/30 backdrop-blur-sm">
+      <header className="flex items-center justify-between p-6 border-b border-slate-400/50 bg-gradient-to-br from-gray-900/60 to-gray-950/60 backdrop-blur-sm">
         <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500 select-none">
           Bookmarks
         </h2>
@@ -21,7 +21,7 @@ const BookmarkList = ({
           <span>Add New</span>
         </button>
       </header>
-      <div className="p-6 h-[594px] overflow-auto bg-slate-900/50 scrollbar-thin scrollbar-thumb-blue-600/50 scrollbar-track-slate-800/30 backdrop-blur-sm">
+      <div className="p-6 h-[594px] overflow-auto bg-gradient-to-br from-gray-800/50 to-gray-900/50 scrollbar-thin scrollbar-thumb-blue-600/50 scrollbar-track-slate-800/30 backdrop-blur-sm">
         {bookmarks.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center p-6 animate-fadeIn">
             <div className="bg-gradient-to-br from-slate-700 to-slate-800 p-8 rounded-full mb-6 shadow-lg shadow-blue-500/5 ring-1 ring-slate-700/50 group transition-all duration-500 hover:shadow-blue-500/20">
