@@ -2,6 +2,7 @@ import "./App.css";
 import CryptoTracker from "./Components/Crypto/Crypto";
 import Greeting from "./Components/Greeting/Greeting";
 import Time from "./Components/Time/Time";
+import Todo from "./Components/Todo/Todo";
 import Weather from "./Components/Weather/Weather";
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
           <div className="item4">
             <Weather />
           </div>
-          <div className="item5">{/* <Todo /> */}</div>
+          <div className="item5">
+            <Todo />
+          </div>
           <div className="item6">
             <CryptoTracker />
           </div>
