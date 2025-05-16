@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useEffect, useState, useRef } from "react";
 
 const Greeting = () => {
@@ -51,6 +52,27 @@ const Greeting = () => {
     }
   }, [isMade]);
 
+
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node) &&
+        !isMade
+      ) {
+        setIsMade(true);
+      }
+    },
+    [isMade]
+  );
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [handleClickOutside]);
+
   return (
     <div className="flex justify-center flex-row items-center gap-24 w-[350px] h-[130px] bg-gradient-to-br from-gray-800 to-gray-900 text-white p-6 shadow-lg text-center rounded-xl">
       <div className="flex flex-col items-center justify-center">
@@ -68,6 +90,7 @@ const Greeting = () => {
               className="w-[250px] h-[50px] text-center border-none bg-transparent focus:outline-none rounded-md"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              maxLength={12}
             />
           </form>
         ) : (
