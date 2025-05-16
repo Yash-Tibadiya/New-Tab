@@ -8,6 +8,7 @@ const BookmarkForm = ({ addBookmark, closeForm }: BookmarkFormProps) => {
   const [bmLink, setBmLink] = useState<string>("");
   const [isUrlValid, setIsUrlValid] = useState<boolean>(true);
   const titleRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   const validateUrl = (url: string): boolean => {
     if (!url) return true;
@@ -51,10 +52,27 @@ const BookmarkForm = ({ addBookmark, closeForm }: BookmarkFormProps) => {
 
   useEffect(() => {
     titleRef.current?.focus();
-  }, []);
+    
+    // Add click event listener to detect clicks outside the form
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        closeForm();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    // Clean up the event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [closeForm]);
 
   return (
-    <div className="w-full max-w-md p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-2xl border border-slate-700/30 backdrop-blur-sm animate-fadeIn">
+    <div
+      ref={formRef}
+      className="w-full max-w-md p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-2xl border border-slate-700/30 backdrop-blur-sm animate-fadeIn"
+    >
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">Add Bookmark</h2>
         <button
