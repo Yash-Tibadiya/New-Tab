@@ -187,7 +187,7 @@ function App() {
                   htmlFor="bg-file-input"
                   className="block text-sm font-medium text-gray-300 mb-1"
                 >
-                  Upload Image/Video &lt; 4MB from Device
+                  Upload Image/Video from Device <span className="text-red-500">{`( Size < 4MB )`}</span>
                 </label>
                 <input
                   id="bg-file-input"
