@@ -11,7 +11,10 @@ import { Image } from "lucide-react";
 function App() {
   const [bgUrl, setBgUrl] = useState(() => {
     const storedBgUrl = localStorage.getItem("bgUrl");
-    return storedBgUrl || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+    return (
+      storedBgUrl ||
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
   });
   const [showModal, setShowModal] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
@@ -31,14 +34,35 @@ function App() {
     localStorage.setItem("bgUrl", bgUrl);
   }, [bgUrl]);
 
+  const isVideo =
+    bgUrl.toLowerCase().endsWith(".mp4") ||
+    bgUrl.toLowerCase().endsWith(".webm");
+
   return (
     <>
       <div
         className="app-wrapper"
         style={{
-          backgroundImage: `url('${bgUrl}')`,
+          backgroundImage: isVideo ? "none" : `url('${bgUrl}')`,
         }}
       >
+        {isVideo && (
+          <video
+            src={bgUrl}
+            autoPlay
+            loop
+            muted
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              left: 0,
+              top: 0,
+              zIndex: -1,
+            }}
+          />
+        )}
         {/* Button to open modal */}
         <button
           className="absolute top-5 right-6 z-10 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-lg shadow-sm transition-all duration-200 hover:shadow-md"
