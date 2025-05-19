@@ -1,9 +1,24 @@
 {
   "manifest_version": 3,
   "version": "1.0.0",
-  "name": "Home Tab",
+  "name": "Fire Tab",
+  "description": "Your extension description",
   "icons": {
+    "16": "flame.png",
+    "24": "flame.png",
+    "32": "flame.png",
+    "48": "flame.png",
     "128": "flame.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "flame.png",
+      "24": "flame.png",
+      "32": "flame.png",
+      "48": "flame.png",
+      "128": "flame.png"
+    },
+    "default_title": "Fire Tab"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
