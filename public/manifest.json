@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "version": "1.0.0",
   "name": "Fire Tab",
-  "description": "Your extension description",
+  "description": "A custom new tab extension for Chrome that displays a Fire Tab page.",
   "icons": {
     "16": "flame.png",
     "24": "flame.png",
@@ -23,5 +23,9 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "permissions": ["storage", "tabs"]
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["cookies", "activeTab", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"]
 }
