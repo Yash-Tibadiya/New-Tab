@@ -13,8 +13,9 @@ function App() {
     const storedBgUrl = localStorage.getItem("bgUrl");
     return (
       storedBgUrl ||
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "https://static.moewalls.com/videos/preview/2025/sakura-field-minecraft-preview.webm"
     );
+    // "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   });
   const [showModal, setShowModal] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
@@ -187,7 +188,8 @@ function App() {
                   htmlFor="bg-file-input"
                   className="block text-sm font-medium text-gray-300 mb-1"
                 >
-                  Upload Image/Video from Device <span className="text-red-500">{`( Size < 4MB )`}</span>
+                  Upload Image/Video from Device{" "}
+                  <span className="text-red-500">{`( Size < 4MB )`}</span>
                 </label>
                 <input
                   id="bg-file-input"
